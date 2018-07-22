@@ -1,0 +1,9 @@
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.date-heading
+{
+	margin-top: 15px !important;
+}
