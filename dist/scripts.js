@@ -877,12 +877,17 @@ $(document).ready(function() {
 		// document.getElementById("demo").innerHTML = days + "Days " + hours + "Hours "
 		// + minutes + "Minutes " + seconds + "Seconds ";
 
-		// Display the result in an element with id="demo"
-		document.getElementById("days").innerHTML = days +" <small>days</small>";
-		document.getElementById("hours").innerHTML = hours + " <small>hours</small> ";
-		document.getElementById("minutes").innerHTML = minutes + " <small>minutes</small> ";
-		document.getElementById("seconds").innerHTML = seconds + " <small>seconds</small> ";
+		var daysElement = document.getElementById("days");
 
+
+		if(daysElement != null)
+		{
+			// Display the result in an element with id="demo"
+			document.getElementById("days").innerHTML = days +" <small>days</small>";
+			document.getElementById("hours").innerHTML = hours + " <small>hours</small> ";
+			document.getElementById("minutes").innerHTML = minutes + " <small>minutes</small> ";
+			document.getElementById("seconds").innerHTML = seconds + " <small>seconds</small> ";
+		}
 		// If the count down is finished, write some text 
 		if (distance < 0) {
 		 clearInterval(x);
@@ -932,23 +937,26 @@ function init() {
     // We are using a div with id="map" seen below in the <body>
     var mapElement = document.getElementById('map');
 
-    // Create the Google Map using out element and options defined above
-    var map = new google.maps.Map(mapElement, mapOptions);
-    
-    var addresses = ['RHS Rosemoor, Devon'];
+    if(mapElement != null)
+    {
+	    // Create the Google Map using out element and options defined above
+	    var map = new google.maps.Map(mapElement, mapOptions);
+	    
+	    var addresses = ['RHS Rosemoor, Devon'];
 
-    for (var x = 0; x < addresses.length; x++) {
-        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
-            var p = data.results[0].geometry.location
-            var latlng = new google.maps.LatLng(p.lat, p.lng);
-            new google.maps.Marker({
-                position: latlng,
-                map: map,
-                icon: 'images/loc.png'
-            });
+	    for (var x = 0; x < addresses.length; x++) {
+	        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
+	            var p = data.results[0].geometry.location
+	            var latlng = new google.maps.LatLng(p.lat, p.lng);
+	            new google.maps.Marker({
+	                position: latlng,
+	                map: map,
+	                icon: 'images/heart.png'
+	            });
 
-        });
-    }
+	        });
+	    }
+	}
     
 }
 google.maps.event.addDomListener(window, 'load', init);
