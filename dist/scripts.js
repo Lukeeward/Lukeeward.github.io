@@ -945,7 +945,7 @@ function init() {
 	    var addresses = ['RHS Rosemoor, Devon'];
 
 	    for (var x = 0; x < addresses.length; x++) {
-	        $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false', null, function (data) {
+	        $.getJSON('https://maps.googleapis.com/maps/api/geocode/json?address='+addresses[x]+'&sensor=false&key=AIzaSyDLmS9_hcJknY-xfD0M_q8Qa1xqoXBvMnY', null, function (data) {
 	            var p = data.results[0].geometry.location
 	            var latlng = new google.maps.LatLng(p.lat, p.lng);
 	            new google.maps.Marker({
