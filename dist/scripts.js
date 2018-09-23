@@ -951,7 +951,7 @@ function init() {
 	            new google.maps.Marker({
 	                position: latlng,
 	                map: map,
-	                icon: 'images/heart.png'
+	                icon: 'images/heart.jpg'
 	            });
 
 	        });
